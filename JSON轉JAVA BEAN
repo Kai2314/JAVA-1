@@ -1,0 +1,10 @@
+
+http://fecbob.pixnet.net/blog/post/39194523-json%E7%9A%84%E8%BD%89%E6%8F%9B-
+
+1.JSONArray轉換為List泛型集合
+（jsonArray==json集合）
+List<JavaBean> list = JSONArray.toList(jsonArray, JavaBean.class);
+2.JSONObject與JavaBean的轉換
+（object==jsonObject）
+JavaBean javaBean=(JavaBean) JSONObject.toBean(object, JavaBean.class);
+如果項目中用到的地方挺多的話，就可以集成的封裝下這些方法
