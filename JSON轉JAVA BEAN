@@ -8,3 +8,7 @@ List<JavaBean> list = JSONArray.toList(jsonArray, JavaBean.class);
 （object==jsonObject）
 JavaBean javaBean=(JavaBean) JSONObject.toBean(object, JavaBean.class);
 如果項目中用到的地方挺多的話，就可以集成的封裝下這些方法
+
+
+JSON与JAVA数据的相互转换
+http://www.java3z.com/cwbwebhome/article/article8/81156.html?id=2663
