@@ -1,0 +1,71 @@
+http://blog.csdn.net/biboheart/article/details/10427883
+
+xml:
+  <package name="test" namespace="/" extends="json-default">
+		<action name="json" class="org.biboheart.json.action.JsonAction"
+			method="loadJson">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		<action name="jsonFromMap" class="org.biboheart.json.action.JsonAction"
+			method="loadJsonFromMap">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	</package>
+	
+JAVA:
+public class JsonAction extends ActionSupport {
+	private static final long serialVersionUID = 1L;
+	private Map<String, Object> dataMap;
+	private String jsonStr;
+
+	public String loadJson() {
+		jsonStr = "{message:\"json\"}";
+		return SUCCESS;
+	}
+
+	public String loadJsonFromMap() {
+		// dataMap中的數據將會被Struts2轉換成JSON字符串，所以這裡要先清空其中的數??據
+		dataMap = new HashMap<String, Object>();
+		dataMap.put("message", "mapJson");
+		return SUCCESS;
+	}
+
+	public Map<String, Object> getDataMap() {
+		return dataMap;
+	}
+
+	public void setDataMap(Map<String, Object> dataMap) {
+		this.dataMap = dataMap;
+	}
+
+	public String getJsonStr() {
+		return jsonStr;
+	}
+
+	public void setJsonStr(String jsonStr) {
+		this.jsonStr = jsonStr;
+	}
+}
+
+
+index.jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	strtus2 json插件返回json實例：
+	<br>
+	<a href="json">獲取普通json</a>
+	<br>
+	<a href="jsonFromMap">獲取Map轉json</a>
+</body>
+</html>
