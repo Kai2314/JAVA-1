@@ -1,3 +1,5 @@
+http://jingyan.baidu.com/article/e8cdb32b619f8437042bad53.html
+
 將json字符串轉​​化成JavaBean對象
 Person person = new Person("1","gson",1);
 Gson gson = new Gson();
