@@ -8,3 +8,6 @@ HTTP請求中，如果是get請求，那麼表單參數以name=value&name1=value
 如果是post請求，那麼表單參數是在請求體中，也是以name=value&name1=value1的形式在請求體中。
 通過chrome的開發者工具可以看到如下（這裡是可讀的形式，不是真正的HTTP請求協議的請求格式）：
 
+從request請求的inputstream中取就可以了
+request.getInputStream();
+再使用JSONObject可以獲取到了
