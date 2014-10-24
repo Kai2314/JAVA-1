@@ -16,3 +16,7 @@ HTTP請求中，如果是get請求，那麼表單參數以name=value&name1=value
 從request請求的inputstream中取就可以了
 request.getInputStream();
 再使用JSONObject可以獲取到了
+
+struts2 annotation interceptor
+http://sunny8675.iteye.com/blog/1537762
+http://meigesir.iteye.com/blog/1493905
