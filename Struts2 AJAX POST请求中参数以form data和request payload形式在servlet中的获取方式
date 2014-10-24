@@ -1,0 +1,10 @@
+http://blog.csdn.net/mhmyqn/article/details/25561535
+
+利用Chrome 按F12檢示送出請求的資料
+form data和request payload形式所取得的方式不同
+request payload需以串流方式取得後，再用GSON自行轉成json物件
+
+HTTP請求中，如果是get請求，那麼表單參數以name=value&name1=value1的形式附到url的後面，
+如果是post請求，那麼表單參數是在請求體中，也是以name=value&name1=value1的形式在請求體中。
+通過chrome的開發者工具可以看到如下（這裡是可讀的形式，不是真正的HTTP請求協議的請求格式）：
+
