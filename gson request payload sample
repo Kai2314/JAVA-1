@@ -1,0 +1,12 @@
+String getRequestPayload = getRequestPayload(request);
+Map<?, ?> jsonToMap = this.jsonToMap(getRequestPayload);
+String jsonT2 = (String) jsonToMap.get("user");
+
+Gson gson = new Gson();
+User t = new User();
+t.setAge("23");
+t.setSex("男");
+String jsonStr = gson.toJson(t);
+System.out.println("jsonStr:" + jsonStr);
+
+User t2 = gson.fromJson(jsonT2, User.class);
