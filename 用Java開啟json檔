@@ -21,3 +21,125 @@ A JSONObject text must begin with '{' at 1 [character 2 line 1]
 
 解法:將檔案存成ms950或 存成無bom檔。
 一般存檔都會存成無bom檔
+
+
+public static Object readJsonFile(String filePath, Object type) throws IOException{
+		// "/app/ApiService/JsonCaptchaInit.json"
+		
+		Object obj = null;
+		File file;
+		String jsonStr = "";
+		
+		FileReader reader = null;
+		Scanner scanner = null;
+		
+		String realPath = ServletActionContext.getServletContext().getRealPath(filePath);
+		file = new File(realPath);
+		
+		try{			
+	    	reader = new FileReader(file);
+	    	JSONTokener jsrc = new JSONTokener(reader);
+	    	JSONObject jobj = new JSONObject(jsrc);
+	    	jsonStr = jobj.toString();	    	
+		}catch(Exception e){
+	    	StringBuilder buffer = new StringBuilder();
+	    	scanner = new Scanner(file);
+    		while (scanner.hasNextLine()) {
+    			buffer.append(scanner.nextLine());
+    		}
+    		jsonStr = buffer.toString();
+		}finally{
+			if(reader != null) {
+				reader.close();
+			}
+			if (scanner != null) {
+    			scanner.close();
+    		}
+		}
+		
+		if(type instanceof List){
+    		obj = jsonToList(jsonStr);
+    	}else if(type instanceof Map){
+    		obj = jsonToMap(jsonStr);
+// 		   	String name = jobj.getString("name");
+    	}
+		
+		return obj;
+	}
+	
+	/**
+     * 将json对象转换為map集合，通过此方法獲取存放map集合鍵的list集合
+     * @param obj
+     * @return
+     */
+	public static List<Object> mapKeys(Map<?,?> map){
+	    List<Object> keysList = new ArrayList<Object>();
+	    String columnStr="column";
+	    for(int i=0;i<map.keySet().size();i++){
+	        keysList.add(columnStr+(i+1));
+	    }
+	    System.out.println(keysList.size());
+	    return keysList;
+	}
+   
+   /**
+    * 將傳入的json字符串轉换為元素為map集合的List集合
+    * @param jsonArrStr
+    * @return
+    */
+	public static List<Map<String, Object>> jsonObjList(String jsonArrStr) {
+       List<Map<String, Object>> jsonObjList = new ArrayList<Map<String, Object>>();
+       List<?> jsonList = jsonToList(jsonArrStr);
+       Gson gson = new Gson();
+       for (Object object : jsonList) {
+           String jsonStr = gson.toJson(object);
+           Map<?, ?> json = jsonToMap(jsonStr);
+           jsonObjList.add((Map<String, Object>) json);
+       }
+       return jsonObjList;
+   }
+   
+   /**
+    * 將傳入的json字符串解析為List集合
+    * @param jsonStr
+    * @return
+    */
+	public static List<?> jsonToList(String jsonStr) {
+       List<?> ObjectList = null;
+       Gson gson = new Gson();
+       java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<List<?>>() {}.getType();
+       ObjectList = gson.fromJson(jsonStr, type);
+       return ObjectList;
+	}
+	
+	/**
+     * 将传入的json字符串解析为Map集合
+     * @param jsonStr
+     * @return
+     */
+	public static Map<?, ?> jsonToMap(String jsonStr) {
+        Map<?, ?> ObjectMap = null;
+        Gson gson = new Gson();
+        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<Map<?,?>>() {}.getType();
+        ObjectMap = gson.fromJson(jsonStr, type);
+        return ObjectMap;
+    }
+	
+	/**
+	 * 取得applection/json RequestPayload值
+	 * @param req
+	 * @return
+	 */
+	public static String getRequestPayload(HttpServletRequest req) {
+        StringBuilder sb = new StringBuilder();
+        try(BufferedReader reader = req.getReader();) {
+                 char[] buff = new char[1024];
+                 int len;
+                 while((len = reader.read(buff)) != -1) {
+                          sb.append(buff,0, len);
+                 }
+        }catch (IOException e) {
+                 e.printStackTrace();
+        }
+        return sb.toString();
+	}
