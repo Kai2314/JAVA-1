@@ -1,0 +1,23 @@
+http://www.victsao.com/blog/100-java/446-java-json
+
+try (FileReader reader = new FileReader("filename");) {
+   JSONTokener jsrc = new JSONTokener(reader);
+   JSONObject jobj = new JSONObject(jsrc);
+   String name = jobj.getString("name");
+   } catch (JSONException | IOException e) {
+}
+
+
+JSONTokener可以吃InputStream 也可以吃Reader，
+再把JSONTokener餵給JSONObject 就可以建立json物件了。
+我一開始用的時候一直有個錯誤：
+A JSONObject text must begin with '{' at 1 [character 2 line 1]
+結果原因是，編輯器存檔時會有隱藏的檔頭，
+就是windows的記事本！我居然忘記這點！
+
+
+原因:因檔案存成utf-8時，有用了 檔首有 bom。
+檔案不可以存成有 檔首 bom檔
+
+解法:將檔案存成ms950或 存成無bom檔。
+一般存檔都會存成無bom檔
