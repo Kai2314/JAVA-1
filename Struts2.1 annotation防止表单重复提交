@@ -1,0 +1,25 @@
+http://www.blogjava.net/supercrsky/articles/341474.html
+
+@Results({
+@Result(name="invalid.token",location="/index.html",type="redirect")})
+@InterceptorRefs({@InterceptorRef(value="token",params={"includeMethods","save"}),@InterceptorRef("defaultStack") })
+public class TestAction extends ActionSupport {
+    private String message;
+    public String execute(){
+    return SUCCESS;
+    }
+    
+
+
+
+    public String save(){
+    return "ok";
+    }
+    public String getMessage() {
+       return message;
+    }
+    public void setMessage(String message) {
+       this.message = message;
+    }
+    
+}
