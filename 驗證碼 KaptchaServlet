@@ -2,6 +2,27 @@
 http://blog.csdn.net/ol_beta/article/details/5877630
 http://blog.csdn.net/responsecool/article/details/39295089
 
+kaptcha.border 是否有邊框默認為true 我們可以自己設置yes，no
+kaptcha.border.color 邊框顏色默認為Color.BLACK
+kaptcha.border.thickness 邊框粗細度默認為1
+kaptcha.producer.impl 驗證碼生成器默認為DefaultKaptcha
+kaptcha.textproducer.impl 驗證碼文本生成器默認為DefaultTextCreator
+kaptcha.textproducer.char.string 驗證碼文本字符內容範圍默認為​​abcde2345678gfynmnpwx
+kaptcha.textproducer.char.length 驗證碼文本字符長度默認為5
+kaptcha.textproducer.font.names 驗證碼文本字體樣式默認為new Font("Arial", 1, fontSize), new Font("Courier", 1, fontSize)
+kaptcha.textproducer.font.size 驗證碼文本字符大小默認為40
+kaptcha.textproducer.font.color 驗證碼文本字符顏色默認為Color.BLACK
+kaptcha.textproducer.char.space 驗證碼文本字符間距默認為2
+kaptcha.noise.impl 驗證碼噪點生成對象默認為DefaultNoise
+kaptcha.noise.color 驗證碼噪點顏色默認為Color.BLACK
+kaptcha.obscurificator.impl 驗證碼樣式引擎默認為WaterRipple
+kaptcha.word.impl 驗證碼文本字符渲染默認為DefaultWordRenderer
+kaptcha.background.impl 驗證碼背景生成器默認為DefaultBackground
+kaptcha.background.clear.from 驗證碼背景顏色漸進默認為Color.LIGHT_GRAY
+kaptcha.background.clear.to 驗證碼背景顏色漸進默認為Color.WHITE
+kaptcha.image.width 驗證碼圖片寬度默認為200
+kaptcha.image.height 驗證碼圖片高度默認為50
+
 <!-​​- 配置驗證碼插件servlet類 -->
   <servlet>
     <servlet-name>kaptcha</servlet-name>
