@@ -1,0 +1,7 @@
+@Id
+	@SequenceGenerator(name = "fw_account_user_seq_name", sequenceName = "fw_account_user_seq", initialValue=1, allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "fw_account_user_seq_name")
+	@Column(name = "sid", unique = true, nullable = false, insertable=false)
+	public Integer getSid() {
+		return sid;
+	}
