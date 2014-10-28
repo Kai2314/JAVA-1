@@ -26,3 +26,16 @@ AUTO:主键由程序控制
 
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
+
+http://blog.csdn.net/mafly008/article/details/9195647
+ibernate注解设置数据库主键自增长时，如果oracle表中的主键ID没有按照正常的sequence自增长(+1)存入数据库。
+可以在序列产生器中加上allocationSize(步长)属性的设置，即：在@SequenceGenerator中加入allocationSize = 1就可以了
+
+2. @SequenceGenerator 相关属性：
+属性                             是否必需                  说明
+name                               必需                       必须匹配startegy 中SEQUENCE 的GeneratedValue 的名称
+allocationSize    可选           默认值： 50
+
+initialValue      可选           默认值： 0
+
+sequenceName      可选           默认值： JPA 持续性提供程序分配它自己创建的序列名
