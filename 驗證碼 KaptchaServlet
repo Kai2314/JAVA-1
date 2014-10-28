@@ -1,0 +1,88 @@
+<!-​​- 配置驗證碼插件servlet類 -->
+  <servlet>
+    <servlet-name>kaptcha</servlet-name>
+    <servlet-class>
+  com.google.code.kaptcha.servlet.KaptchaServlet
+  </servlet-class>
+  <!-​​- 給驗證碼插件servlet類配置參數-->
+    <!-​​- 邊框設置 yes no -->
+    <init-param>
+      <param-name>kaptcha.border</param-name>
+      <param-value>no</param-value>
+    </init-param>
+    <!-​​- 邊框顏色顏色名稱例如：red blue black等也可以是RGB：105,179,90 -->
+    <init-param>
+      <param-name>kaptcha.border.color</param-name>
+      <param-value>red</param-value>
+    </init-param>
+    <!-​​- 邊框寬度 -->
+    <init-param>
+      <param-name>kaptcha.border.thickness</param-name>
+      <param-value>5</param-value>
+    </init-param>
+    <!-​​- 產生驗證碼的字符源頭兼容中文的-->
+    <init-param>
+      <param-name>kaptcha.textproducer.char.string</param-name>
+      <param-value>2345共2354阿斯asdf蒂芬2345爬牆2345額問題了ewry空1254間的股fktiul份的y7u12354o私人254認可ry13254iu的身份報123告快樂</param-value>
+    </init-param>
+    <!-​​- 生成結果的字符個數 -->
+    <init-param>
+      <param-name>kaptcha.textproducer.char.length</param-name>
+      <param-value>5</param-value>
+    </init-param>
+    <!-​​- 生成結果的字符字體 -->
+    <init-param>
+      <param-name>kaptcha.textproducer.font.names</param-name>
+      <param-value>微軟雅黑,宋體,楷體</param-value>
+    </init-param>
+    <!-​​- 生成結果的字符大小 -->
+    <init-param>
+      <param-name>kaptcha.textproducer.font.size</param-name>
+      <param-value>40</param-value>
+    </init-param>
+    <!-​​- 生成結果的字符 顏色 -->
+    <init-param>
+      <param-name>kaptcha.textproducer.font.color</param-name>
+      <param-value>blue</param-value>
+    </init-param>
+    <!-​​- 生成結果的字符 字間距 -->
+    <init-param>
+      <param-name>kaptcha.textproducer.char.space</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <!-​​- 干擾線 生成器 -->
+    <init-param>
+      <param-name>kaptcha.noise.impl</param-name>
+      <param-value>com.google.code.kaptcha.impl.DefaultNoise</param-value>
+    </init-param>
+    <!-​​- 干擾線 顏色 -->
+    <init-param>
+      <param-name>kaptcha.noise.color</param-name>
+      <param-value>BLACK</param-value>
+    </init-param>
+    <!-​​- 干擾線背景漸變顏色從左側向右漸變-->
+    <init-param>
+      <param-name>kaptcha.background.clear.from</param-name>
+      <param-value>green</param-value>
+    </init-param>
+    <!-​​- 干擾線背景漸變顏色從右側向左漸變-->
+    <init-param>
+      <param-name>kaptcha.background.clear.to</param-name>
+      <param-value>yellow</param-value>
+    </init-param>
+    <!-​​- 驗證碼圖片寬度 -->
+    <init-param>
+      <param-name>kaptcha.image.width</param-name>
+      <param-value>200</param-value>
+    </init-param>
+    <!-​​- 驗證碼圖片高度 -->
+    <init-param>
+      <param-name>kaptcha.image.height</param-name>
+      <param-value>50</param-value>
+    </init-param>
+  </servlet>
+  <!-​​- 驗證碼請求名 映射 -->
+  <servlet-mapping>
+    <servlet-name>kaptcha</servlet-name>
+    <url-pattern>/yzm</url-pattern>
+  </servlet-mapping>
