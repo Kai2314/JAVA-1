@@ -1,0 +1,28 @@
+过annotation来映射hibernate实体的，基于annotation的hibernate主键标识为@Id
+其生成规则由@GeneratedValue设定的，这里的@Id和@GenertedValue都是JPA的标准用法
+JPA提供的四种标准用法为TABLE，SEQUENCE，IDENTITY，AUTO
+TABLE:使用一个特定的数据库表格来保存主键
+SEQUENCE:根据地层数据库的序列来生成主键，条件是数据库支持序列，主要是Oracle
+IDENTITY:主键由数据库自动生成(主要是自动增长型)
+AUTO:主键由程序控制
+
+
+/*
+ * name属性表示该表主键生成策略的名称，它被引用在@GeneratedValue中设置的"generator"值中。
+ * sequenceName属性表示生成策略用到的数据库序列名称。
+ */
+@Entity
+@SequenceGenerator(name="shcoolSQN",sequenceName="school_SQN")
+
+/*
+ * 属性stragegy 生成的策略类型
+ * generator 
+ */
+@Id
+@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="shcoolSQN")
+
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
