@@ -1,0 +1,22 @@
+1.
+json data傳給struts2時，因傳送過會將obj轉為json物件，所以寫法應如下
+var json = {
+	user : {name:"abc", mima:"123"}
+};
+
+這樣才會傳送一顆attribute為 user的物件到struts2的action中
+
+2.
+page中需使用interceptor，並用interceptor-ref name="json" 做攔截。
+參數enableSMD需為true
+<package name="json-package" extends="json-default" abstract="true">
+	<interceptors>
+		<interceptor-stack name="my-interceptor-stack">
+			<interceptor-ref name="json">
+				<!----><param name="enableSMD">true</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</interceptor-stack>
+	</interceptors>		
+	<default-interceptor-ref name="my-interceptor-stack"/>
+</package>
