@@ -1,0 +1,3 @@
+json data傳送給後端j2ee時，需遵造java attribute命名規範
+
+attribute命名規範，第一碼需小寫
