@@ -1,0 +1,28 @@
+var loginData = {};
+loginData.name = "abc";
+loginData.mima = "123456999";
+
+var json = {
+		user : loginData
+};
+        	
+json --> {user : loginData}
+傳送過程中，會自將json物件轉為json資料傳送，故裡面需有物件的attribute  (user)，才能對應到java action所定義的attribute
+
+$http.post(AppSettings.JsonCaptchaInitApi, {user : loginData})
+  .success(function (data) {
+      $scope.captchaImageUrl = data.imageUrl;
+      $scope.captchaToken = data.tokenValue;
+      $scope.captcha = '';
+      console.log("$scope.captchaToken:" + $scope.captchaToken);
+});
+
+or
+
+$http.post(AppSettings.JsonCaptchaInitApi, json)
+  .success(function (data) {
+      $scope.captchaImageUrl = data.imageUrl;
+      $scope.captchaToken = data.tokenValue;
+      $scope.captcha = '';
+      console.log("$scope.captchaToken:" + $scope.captchaToken);
+});
