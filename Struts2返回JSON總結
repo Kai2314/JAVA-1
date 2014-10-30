@@ -1,0 +1,39 @@
+http://ryanjoy.iteye.com/blog/783728
+
+<!-​​- 封裝所有的get開頭的方法 -->
+<result type="json" name="user">
+</result>
+
+<!-​​- 只包含user.id屬性 -->
+<result type="json" name="user">
+    <param name="includeProperties">
+        user\.id
+    </param>
+</result>
+
+<!-​​- 返回user的JSON List列表，其中userInfosList是action中的一個List類型的屬性，userInfosList \[\d+\]\. userName表示，userInfosList中存儲的對象0..end的userName屬性（list中存儲的對象必須有userName屬性）
+-->
+<result name="success" type="json">
+<param name="includeProperties">
+userInfosList\[\d+\]\.userName,userInfosList\[\d+\]\.password
+</param>
+</result>
+
+<!-​​- 不包含user屬性 -->
+<result type="json" name="list">
+    <param name="excludeProperties">
+        user
+    </param>
+</result>
+
+<!-​​- 根對像只包含user -->
+<result type="json">
+    <param name="root">
+        user
+    </param>
+</result>
+
+<!-​​- "root"對像中父類的field(屬性)不會(會？) 默認存放到JSON數據中，如果不想這樣做，需要在配置時指定ignoreHierarchy 為false: -->
+<result type="json">
+    <param name="ignoreHierarchy">false</param>
+</result>
