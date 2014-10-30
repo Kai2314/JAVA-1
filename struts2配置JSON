@@ -1,0 +1,26 @@
+< param name = "includeProperties" > < / param > 
+includeProperties: 这个属性表示要包含进JSON数据中的数据。
+
+< param name="excludeProperties" >< / param >
+excludeProperties: 这个属性表示不要包含进JSON数据中的数据。
+
+< param name="excludeNullProperties" >true< / param >
+excludeNullProperties: 这个属性表示去除空数据。
+
+< param name="ignoreHierarchy" >false< / param >
+ignoreHierarchy : 这个属性表示是否忽略等级，也就是继承关系,设置为 false 后会将父类和子类的属性一起返回
+
+
+root：只包含xx对象
+excludeProperties ：除了xx之外的集合
+includeProperties ： 包含xx的集合
+wrapPrefix ：json结果开头添加xx(比如 [)
+wrapSuffix ：同上，只不过是结尾
+ignoreHierarchy ：转化时是否忽略继承关系true/false
+enumAsBean : 是否将枚举当做一个bean处理
+enableGZIP ：是否支持gzip压缩输出
+noCache ：是否缓存
+excludeNullProperties ： 是否转化输出 null值
+statusCode ：设置响应代号比如 304
+callbackParameter : JSONP跨域访问的回调设置
+contentType ： 输出类型
