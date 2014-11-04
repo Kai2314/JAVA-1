@@ -19,3 +19,40 @@ https://linkwithweb.googlecode.com/svn/trunk/Utilities/FlashFileUpload
         return SUCCESS;
 		
 	}
+
+
+@Action(value = "upload1", results = { @Result(name = "success", location="/application/swfUpload/swfUpload_sample_1.jsp")})
+	public String upload1() throws Exception {
+		String filesDirectory = "F:\\tmp";
+		FileInputStream in = null;
+        FileOutputStream out = null;
+         
+        File dir = new File (filesDirectory);
+        if ( !dir.exists() ){
+        	dir.mkdirs();
+        }
+         
+        String targetPath =  dir.getPath() + File.separator + fileFileName;
+        System.out.println("source file path ::"+file.getAbsolutePath());
+        System.out.println("saving file to ::" + targetPath);
+        File destinationFile = new File ( targetPath);
+        try {
+            in = new FileInputStream( file );
+            out = new FileOutputStream( destinationFile );
+            
+            byte[] bytefer = new byte[1024];
+    		int length = 0;
+    		while ((length = in.read(bytefer)) != -1) {
+    			out.write(bytefer, 0, length);
+    		} 
+        }finally {
+            if (in != null) {
+                in.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+        return SUCCESS;
+		
+	}
