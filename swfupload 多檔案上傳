@@ -2,3 +2,20 @@ https://ashwinrayaprolu.wordpress.com/2011/04/29/swfupload-and-java-servlet-exam
 
 svn code
 https://linkwithweb.googlecode.com/svn/trunk/Utilities/FlashFileUpload
+
+
+@Action(value = "upload2", results = { @Result(name = "success", location="/application/swfUpload/swfUpload_sample_1.jsp")})
+	public String upload2() throws Exception {		
+        try {
+        	String filesDirectory = "F:\\tmp";
+            File fileToCreate = new File(filesDirectory, this.fileFileName);
+            FileUtils.copyFile(this.file, fileToCreate);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }        
+        finally {
+            
+        }
+        return SUCCESS;
+		
+	}
