@@ -1,0 +1,19 @@
+http://blog.163.com/jianyi_tao/blog/static/549491822011744356489
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class Test
+{
+    public static void main(String[] args) 
+    {        
+        System.out.println("生成的流水账号为: " + createSerialCode());
+    }
+
+    public static String createSerialCode() {
+        String fullDate = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+        int randomNum = (int)(Math.random() * 900) + 100;
+        
+        return fullDate + randomNum;
+   }
+}
