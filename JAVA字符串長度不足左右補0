@@ -1,0 +1,25 @@
+http://fanli7.net/a/JAVAbiancheng/JAVAzonghe/20130101/282579.html
+
+今天碰到一簡單的功能，就是把字符串格式化成9位，不足的前面補0。懶人就想一行代碼解决這個問題，後來發現能一行代碼補足倍數的，前面都是補的空格，而要想補0的，都是需要整數型。用到的函數是 String.format，可以格式化整形，字符串，日期等,具體請百度。
+System.out.println(String.format(“%09d”, 123);
+輸出：000000123
+System.out.println(String.format(“%9s”, “123″);
+輸出： 123
+剛好我那字符串是可以轉換成整型的，所以代碼如下：
+System.out.println(String.format(“%09d”, Long.parseLong(“123″)));
+輸出：000000123
+摘下網上的字符串補0方法,測試可用：
+public static String addZeroForNum(String str, int strLength) {
+    int strLen = str.length();
+    if (strLen < strLength) {
+        while (strLen < strLength) {
+            StringBuffer sb = new StringBuffer();
+            sb.append("0").append(str);// 左補0
+            // sb.append(str).append("0");//右補0
+            str = sb.toString();
+            strLen = str.length();
+        }
+    }
+
+    return str;
+}
