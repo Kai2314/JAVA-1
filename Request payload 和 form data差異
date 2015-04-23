@@ -1,0 +1,14 @@
+Content-Type:
+
+enctype的三種編碼
+form表單中enctype屬性可以用來控制對表單數據的發送前的如何進行編碼，即在發送到伺服器之前，所有字元都會進行編碼（空格轉換為 "+" 加號，特殊符號轉換為 ASCII HEX 值）。默認是application/x-www-form-urlencoded。
+
+multipart/form-data用於發送二進位的檔，其他兩種類型不能用於發送檔
+
+text/plain用於發送純文字內容，不對特殊字元進行編碼，一般用於email之類的。
+
+application/x-www-form-urlencoded和text/plain的區別簡單講就是一個發送html內容，一個發送純文字內容
+
+1. application/x-www-form-urlencoded    在發送前編碼所有字元（預設）
+2. multipart/form-data    不對字元編碼。在使用包含檔上傳控制項的表單時，必須使用該值。
+3. text/plain    空格轉換為 "+" 加號，但不對特殊字元編碼。
