@@ -12,3 +12,28 @@ http://bh-keven.iteye.com/blog/1617788
 
 Shared File System Master—Slave配置测试  
 http://windows9834.blog.163.com/blog/static/27345004201322785456492/
+
+KahaDB的屬性：
+property name	default value	Comments
+directory	activemq-data	消息文件和日志的存儲目錄
+indexWriteBatchSize	1000	一批索引的大小，當要更新的索引量到達這個值時，更新到消息文件中
+indexCacheSize	10000	內存中，索引的頁大小
+enableIndexWriteAsync	false	索引是否異步寫到消息文件中
+journalMaxFileLength	32mb	一個消息文件的大小
+enableJournalDiskSyncs	true	是否講非事務的消息同步寫入到磁盤
+cleanupInterval	30000	清除操作周期，單位ms
+checkpointInterval	5000	索引寫入到消息文件的周期，單位ms
+ignoreMissingJournalfiles	false	忽略丟失的消息文件，false，當丟失了消息文件，启動異常
+checkForCorruptJournalFiles	false	檢查消息文件是否損壞，true，檢查發現損壞會嘗試修复
+checksumJournalFiles	false	產生一個checksum，以便能夠檢測journal文件是否損壞。
+5.4版本之後有效的屬性:	
+
+archiveDataLogs	false	當为true時，歸檔的消息文件被移到directoryArchive,而不是直接刪除
+directoryArchive	null	存儲被歸檔的消息文件目錄
+databaseLockedWaitDelay	10000	在使用負載時，等待獲得文件锁的延遲時間，單位ms
+maxAsyncJobs	10000	同個生產者產生等待寫入的異步消息最大量
+concurrentStoreAndDispatchTopics	false	當寫入消息的時候，是否轉發主題消息
+concurrentStoreAndDispatchQueues	true	當寫入消息的時候，是否轉發隊列消息
+5.6版本之後有效的屬性:	
+
+archiveCorruptedIndex	false	是否歸檔錯誤的索引
