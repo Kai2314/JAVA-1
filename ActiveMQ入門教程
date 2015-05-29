@@ -1,6 +1,6 @@
 http://blog.csdn.net/yuguiyang1990/article/category/1658165
 
-
+MASTER - SLAVE
 實作ActiveMQ NFS SHARED FILE SYSTEM MASTER/SLAVE
 http://harbey.iteye.com/blog/1756607
 
@@ -12,6 +12,10 @@ http://bh-keven.iteye.com/blog/1617788
 
 Shared File System Master—Slave配置测试  
 http://windows9834.blog.163.com/blog/static/27345004201322785456492/
+
+Broker Cluster
+activemq Dynamic Discovery 
+http://www.chengxuyuans.com/javabase/91233.html
 
 KahaDB的屬性：
 property name	default value	Comments
