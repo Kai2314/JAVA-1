@@ -17,6 +17,17 @@ Broker Cluster
 activemq Dynamic Discovery 
 http://www.chengxuyuans.com/javabase/91233.html
 
+Broker Cluster 配置
+查關鍵字
+Multicast 
+http://blog.evercoding.net/2014/07/17/activemq-note/
+
+http://wenku.baidu.com/view/825927ea19e8b8f67c1cb9e4.html
+(第7頁)
+
+
+
+
 KahaDB的屬性：
 property name	default value	Comments
 directory	activemq-data	消息文件和日志的存儲目錄
