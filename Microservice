@@ -16,3 +16,17 @@ Dropwizard与Spring Boot比较
 http://www.jdon.com/soa/dropwizard-vs-spring-boot.html
 
 ===============================Spring Boot
+project sagan
+https://github.com/spring-io/sagan
+
+可用Metrics監控
+
+Cloud(PaaS)
+- Cloud Foundry
+- Heroku
+
+Spring Cloud
+-Netflix
+	Eureka
+	Hystrix
+http://bit.ly/lAwW5u1
