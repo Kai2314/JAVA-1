@@ -1,0 +1,18 @@
+How to convert System.currentTimeMillis(); to seconds?
+
+final long start = System.nanoTime();
+counter.countPrimes(1000000);
+final long end = System.nanoTime();
+
+System.out.println("Took: " + ((end - start) / 1000000) + "ms);
+
+ns（nanosecond）：納秒， 時間單位。一秒的10億分之一，即等於10的負9次方秒。常用作 記憶體讀寫速度的單位，其前面數位越小則表示速度越快。
+　　1納秒=1000 皮秒　
+　　1納秒 =0.001  微秒
+　　1納秒=0.000001 毫秒
+　　1納秒=0.00000 0001秒
+java的System.currentTimeMillis()和System.nanoTime()有什麼區別
+java中System.nanoTime()返回的是納秒，nanoTime而返回的可能是任意時間，甚至可能是負數……按照API的說明，nanoTime主要的用途是衡量一個時間段，比如說一段代碼執行所 用的時間，獲取資料庫連接所用的時間，網路訪問所用的時間等。另外，nanoTime提供了納秒級別的精度，但實際上獲得的值可能沒有精確到納秒。
+但總的來說，這兩個函數的用途是完全不一樣的！。
+java中System.currentTimeMillis()返回的毫秒，這個毫秒其實就是自1970年1月1日0時起的毫秒數，Date()其實就是相當於Date(System.currentTimeMillis());因為Date類還有構造Date(long date)，用來計算long秒與1970年1月1日之間的毫秒差。。
+
