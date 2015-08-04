@@ -1,0 +1,33 @@
+http://kdboy.iteye.com/blog/1169637
+
+Filter Chain定義說明 
+1、一個URL可以配置多個Filter，使用逗號分隔 
+2、當設置多個過濾器時，全部驗證通過，才視為通過 
+3、部分過濾器可指定參數，如perms，roles 
+
+Shiro內置的FilterChain 
+Filter      NameClass
+anon	      org.apache.shiro.web.filter.authc.AnonymousFilter
+authc	      org.apache.shiro.web.filter.authc.FormAuthenticationFilter
+authcBasic	org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter
+perms	      org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter
+port	      org.apache.shiro.web.filter.authz.PortFilter
+rest	      org.apache.shiro.web.filter.authz.HttpMethodPermissionFilter
+roles	      org.apache.shiro.web.filter.authz.RolesAuthorizationFilter
+ssl	        org.apache.shiro.web.filter.authz.SslFilter
+user	      org.apache.shiro.web.filter.authc.UserFilter
+
+==================================================================
+http://technoboy.iteye.com/blog/1858842
+
+UserFilter 
+  如果配置了UserFilter，表示請求的Subject已認證過或被"remember me"記憶： 
+Java代碼  收藏代碼
+[urls]  
+/news/**=user  
+
+FormAuthenticationFilter 
+  FormAuthenticationFilter需要當前的Subject必須被認證過，否則流程將跳轉到設置的登陸url(通過setLoginUrl方法)。 
+Java代碼  收藏代碼
+[urls]  
+/news/**=authc  
