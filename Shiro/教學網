@@ -1,5 +1,7 @@
 apache shiro ==> web security 驗證  可結合spring
 http://jinnianshilongnian.iteye.com/blog/2018936
+
+在 Web 項目中應用 Apache Shiro
 http://www.ibm.com/developerworks/cn/java/j-lo-shiro/
 
 =========shiro-example=========
