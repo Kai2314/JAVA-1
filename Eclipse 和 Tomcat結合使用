@@ -1,1 +1,8 @@
 http://www.dotblogs.com.tw/alantsai/archive/2013/09/30/eclipse-work_with_tomcat.aspx
+
+設定網址路徑
+切換到"Modules"可以設定那些Web專案要用這個伺服器執行，還有使用的預設路徑。舉例來說，我們這個專案的預設路徑就是：/ServletSample
+
+omcat啟動參數 - 增大記憶體
+當網站比較大的時候，我們或許回想給Tomcat比較大的記憶體空間，這個時候我們就需要設定啟動參數。
+選"Open launch Configuartion" 然後切換到 "Arguments"就可以增加了：
