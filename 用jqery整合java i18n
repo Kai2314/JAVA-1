@@ -1,0 +1,32 @@
+教學
+https://code.google.com/p/jquery-i18n-properties/
+http://blog.xuite.net/franky.chao/wretch/154513855-%E5%88%A9%E7%94%A8+jQuery+%E4%BE%86%E5%AF%A6%E5%81%9A+javascript+%E7%9A%84+i18n
+https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CBoQFjAAahUKEwiE6fbh5a_IAhWGoJQKHXVACo8&url=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Fweb%2F1305_hezj_jqueryi18n%2F&usg=AFQjCNGEgFJQ2TKyki4fC9D-x0GHtOPbSg&sig2=EXqobBKKJQststAg3DLs0Q&cad=rja
+
+function i18nMessage(messageKey) {
+	var l_lang = '';
+	if (navigator.userLanguage) { // IE Explorer
+		l_lang = navigator.userLanguage;
+		var dashIndex = l_lang.indexOf('-');
+		if (dashIndex >= 0) {
+			l_lang = l_lang.substring(0, dashIndex) + '-' + 
+					l_lang.substring(dashIndex + 1, l_lang.length).toUpperCase();
+		}
+	} else if (navigator.language) {// FireFox, Chrome
+		l_lang = navigator.language;
+	}
+	
+	var returnMsg = '--Not Found--';	
+	jQuery.i18n.properties({// 載入資流覽器語言對應的資源檔
+		name : 'Web-Messages', // 資源檔名稱
+		path : 'recources/i18n/', // 資源檔路徑
+		mode : 'both', // 用 Map 的方式使用資源檔中的值
+		language: "en_US",//使用者瀏灠器language
+		callback : function() {// 載入成功後設置顯示內容
+			jQuery.i18n.prop(messageKey);
+			returnMsg = eval(messageKey);
+		}
+	});
+	
+	return returnMsg;
+}
