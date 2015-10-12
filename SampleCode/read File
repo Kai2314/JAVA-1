@@ -1,0 +1,43 @@
+		lastestValidContent = Jsoup.parse(getHtmlFile1(request, "test1.html")).body().html();
+		newContent = Jsoup.parse(getHtmlFile1(request, "test2.html")).body().html();
+
+/**
+	 * 測試用
+	 * @param request
+	 * @param fileName
+	 * @return
+	 * @throws Exception
+	 */
+	private String getHtmlFile1(HttpServletRequest request, String fileName) throws Exception{
+		
+		String realPath = request.getSession().getServletContext().getRealPath("/recources/testFile/" + fileName);
+		
+		File file = new File(realPath);
+		
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		StringBuilder content = new StringBuilder(1024);
+		String s = "";
+		while ((s = br.readLine()) != null) {
+			content.append(s);
+		}		
+		return content.toString();
+	}
+	
+	
+	/**
+	 * 測試用
+	 * @param fileName
+	 * @return
+	 * @throws Exception
+	 */
+	private String getHtmlFile(String fileName) throws Exception{		
+		FileReader fr = new FileReader("F:\\tmp\\" + fileName);
+		BufferedReader br = new BufferedReader(fr);
+		StringBuilder content = new StringBuilder(1024);
+		String s = "";
+		while ((s = br.readLine()) != null) {
+			content.append(s);
+		}		
+		return content.toString();		
+	}
