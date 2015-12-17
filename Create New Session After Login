@@ -1,0 +1,32 @@
+public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) request;		
+		HttpSession session = httpRequest.getSession(false);
+		
+		logger.info("oldSession ID Anterior: {}", session.getId());
+		
+		if (session != null && !session.isNew()) {
+			// copy session attributes from old session to a map.
+			HttpSession oldSession = (HttpSession) httpRequest.getSession(false);
+      HashMap<String, Object> old = new HashMap<String, Object>();
+      Enumeration<?> keys = (Enumeration<?>) oldSession.getAttributeNames();
+      while (keys.hasMoreElements()) {
+          String key = (String) keys.nextElement();
+          old.put(key, oldSession.getAttribute(key));
+          oldSession.removeAttribute(key);
+      }
+
+      // invalidation session and create new session.
+      oldSession.invalidate();
+      
+      //create new session
+      HttpSession newSession = httpRequest.getSession(true);
+
+      // copy key value pairs from map to new session.
+      for (Map.Entry entry : old.entrySet()) {
+      	newSession.setAttribute((String) entry.getKey(), entry.getValue());
+      }            
+      logger.info("oldSession ID Anterior: {}", newSession.getId());
+    }
+		chain.doFilter(request, response);
+}
