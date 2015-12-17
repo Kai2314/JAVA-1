@@ -10,7 +10,7 @@
 	 */
 	private String getHtmlFile1(HttpServletRequest request, String fileName) throws Exception{
 		
-		String realPath = request.getSession().getServletContext().getRealPath("/recources/testFile/" + fileName);
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/testFile/" + fileName);
 		
 		File file = new File(realPath);
 		
